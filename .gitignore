@@ -5,3 +5,5 @@
 .DS_Store
 /build
 /captures
+profiles_settings.xml
+Project_Default.xml
