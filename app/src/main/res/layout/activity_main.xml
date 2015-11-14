@@ -1,14 +1,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:custom="http://schemas.android.com/apk/res/com.zsl.customviewdemo"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+              android:layout_height="match_parent">
 
     <com.zsl.customviewdemo.view.CustomTitleView
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         custom:titleText="I Love You"
         custom:titleTextColor="#ff0000"
+        android:padding="10dp"
         custom:titleTextSize="45sp"/>
 
 </LinearLayout>
