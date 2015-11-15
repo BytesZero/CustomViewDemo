@@ -45,19 +45,19 @@ public class CustomTitleView extends View {
         /**
          * 获得自定义样式属性
          */
-        TypedArray typedArray=context.getTheme().obtainStyledAttributes(attrs, R.styleable.CustomTitleView,defStyleAttr,0);
-        int n=typedArray.getIndexCount();
-        for (int i=0;i<n;i++){
-            int attr=typedArray.getIndex(i);
-            if (R.styleable.CustomTitleView_titleText==attr){
+        TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.CustomTitleView, defStyleAttr, 0);
+        int n = typedArray.getIndexCount();
+        for (int i = 0; i < n; i++) {
+            int attr = typedArray.getIndex(i);
+            if (R.styleable.CustomTitleView_titleText == attr) {
                 //获得文本
-                mTitleText=typedArray.getString(attr);
-            }else if (R.styleable.CustomTitleView_titleTextColor==attr){
+                mTitleText = typedArray.getString(attr);
+            } else if (R.styleable.CustomTitleView_titleTextColor == attr) {
                 //获得颜色＊＊默认为黑色
-                mTitleTextColor=typedArray.getColor(attr, Color.BLACK);
-            }else if(R.styleable.CustomTitleView_titleTextSize==attr){
+                mTitleTextColor = typedArray.getColor(attr, Color.BLACK);
+            } else if (R.styleable.CustomTitleView_titleTextSize == attr) {
                 //获得文本大小＊＊默认是16sp
-                mTitleTextSize=typedArray.getDimensionPixelSize(attr, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,16,getResources().getDisplayMetrics()));
+                mTitleTextSize = typedArray.getDimensionPixelSize(attr, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 16, getResources().getDisplayMetrics()));
             }
         }
         //回收
@@ -66,11 +66,11 @@ public class CustomTitleView extends View {
         /**
          * 获得绘制文本的宽和高
          */
-        mPaint=new Paint();
+        mPaint = new Paint();
         mPaint.setTextSize(mTitleTextSize);
 
-        mBound=new Rect();
-        mPaint.getTextBounds(mTitleText,0,mTitleText.length(),mBound);
+        mBound = new Rect();
+        mPaint.getTextBounds(mTitleText, 0, mTitleText.length(), mBound);
     }
 
     @Override
@@ -80,12 +80,10 @@ public class CustomTitleView extends View {
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
         int heightSize = MeasureSpec.getSize(heightMeasureSpec);
         int width;
-        int height ;
-        if (widthMode == MeasureSpec.EXACTLY)
-        {
+        int height;
+        if (widthMode == MeasureSpec.EXACTLY) {
             width = widthSize;
-        } else
-        {
+        } else {
             mPaint.setTextSize(mTitleTextSize);
             mPaint.getTextBounds(mTitleText, 0, mTitleText.length(), mBound);
             float textWidth = mBound.width();
@@ -93,11 +91,9 @@ public class CustomTitleView extends View {
             width = desired;
         }
 
-        if (heightMode == MeasureSpec.EXACTLY)
-        {
+        if (heightMode == MeasureSpec.EXACTLY) {
             height = heightSize;
-        } else
-        {
+        } else {
             mPaint.setTextSize(mTitleTextSize);
             mPaint.getTextBounds(mTitleText, 0, mTitleText.length(), mBound);
             float textHeight = mBound.height();
@@ -106,22 +102,22 @@ public class CustomTitleView extends View {
         }
 
 
-
         setMeasuredDimension(width, height);
     }
 
     /**
      * 绘制方法
+     *
      * @param canvas
      */
     @Override
     protected void onDraw(Canvas canvas) {
         //绘制一个矩形颜色为黄色
-        mPaint.setColor(Color.rgb(21,96,243));
+        mPaint.setColor(Color.rgb(21, 96, 243));
         canvas.drawRect(0, 0, getMeasuredWidth(), getMeasuredHeight(), mPaint);
         //绘制一个text颜色为设置的颜色
         mPaint.setColor(mTitleTextColor);
         mPaint.setTextSize(mTitleTextSize);
-        canvas.drawText(mTitleText,(getWidth()-mBound.width())/2,(getHeight()+mBound.height())/2,mPaint);
+        canvas.drawText(mTitleText, (getWidth() - mBound.width()) / 2, (getHeight() + mBound.height()) / 2, mPaint);
     }
 }

@@ -21,7 +21,7 @@ import com.zsl.customviewdemo.R;
  */
 public class CustomImageText extends View {
 
-    private  final int IMAGE_SCALE_FITXY=0;
+    private final int IMAGE_SCALE_FITXY = 0;
 
     //属性
     String mImageText;
@@ -131,32 +131,32 @@ public class CustomImageText extends View {
         mPaint.setColor(Color.GREEN);
         canvas.drawRect(0, 0, getMeasuredWidth(), getMeasuredHeight(), mPaint);
 
-        mRect.left=getPaddingLeft();
-        mRect.right=mWidth-getPaddingRight();
-        mRect.top=getPaddingTop();
-        mRect.bottom=mHeight-getPaddingBottom();
+        mRect.left = getPaddingLeft();
+        mRect.right = mWidth - getPaddingRight();
+        mRect.top = getPaddingTop();
+        mRect.bottom = mHeight - getPaddingBottom();
 
         mPaint.setColor(mImageTextColor);
         mPaint.setStyle(Paint.Style.FILL);
         //绘制字体
-        if (mTextBound.width()>mWidth){
-            TextPaint paint=new TextPaint(mPaint);
-            String content= TextUtils.ellipsize(mImageText,paint,mWidth-getPaddingLeft()-getPaddingRight(), TextUtils.TruncateAt.END).toString();
-            canvas.drawText(content,getPaddingLeft(),mHeight-getPaddingBottom(),mPaint);
+        if (mTextBound.width() > mWidth) {
+            TextPaint paint = new TextPaint(mPaint);
+            String content = TextUtils.ellipsize(mImageText, paint, mWidth - getPaddingLeft() - getPaddingRight(), TextUtils.TruncateAt.END).toString();
+            canvas.drawText(content, getPaddingLeft(), mHeight - getPaddingBottom(), mPaint);
 
-        }else {
+        } else {
             canvas.drawText(mImageText, (mWidth - mTextBound.width() * 1.0f) / 2, (mHeight - getPaddingBottom()), mPaint);
         }
-        mRect.bottom-=mTextBound.height();
+        mRect.bottom -= mTextBound.height();
         //绘制图片
-        if (mImageScaleType==IMAGE_SCALE_FITXY){
-            canvas.drawBitmap(mImage,null,mRect,mPaint);
-        }else{
-            mRect.left=(mWidth-mImage.getWidth())/2;
-            mRect.right=(mWidth+mImage.getWidth())/2;
-            mRect.top=(mHeight-mTextBound.height()-mImage.getHeight())/2;
-            mRect.bottom=(mHeight-mTextBound.height()+mImage.getHeight())/2;
-            canvas.drawBitmap(mImage,null,mRect,mPaint);
+        if (mImageScaleType == IMAGE_SCALE_FITXY) {
+            canvas.drawBitmap(mImage, null, mRect, mPaint);
+        } else {
+            mRect.left = (mWidth - mImage.getWidth()) / 2;
+            mRect.right = (mWidth + mImage.getWidth()) / 2;
+            mRect.top = (mHeight - mTextBound.height() - mImage.getHeight()) / 2;
+            mRect.bottom = (mHeight - mTextBound.height() + mImage.getHeight()) / 2;
+            canvas.drawBitmap(mImage, null, mRect, mPaint);
         }
 
 
