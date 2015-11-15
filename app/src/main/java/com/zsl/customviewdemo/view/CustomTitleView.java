@@ -75,35 +75,39 @@ public class CustomTitleView extends View {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        int widthMode=MeasureSpec.getMode(widthMeasureSpec);
-        int widthSize=MeasureSpec.getSize(widthMeasureSpec);
-
-        int heightMode=MeasureSpec.getMode(heightMeasureSpec);
-        int heightSize=MeasureSpec.getSize(heightMeasureSpec);
-
-        int width,height;
-        if (widthMode==MeasureSpec.EXACTLY){
-            width=widthSize;
-        }else{
+        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+        int heightSize = MeasureSpec.getSize(heightMeasureSpec);
+        int width;
+        int height ;
+        if (widthMode == MeasureSpec.EXACTLY)
+        {
+            width = widthSize;
+        } else
+        {
             mPaint.setTextSize(mTitleTextSize);
-            mPaint.getTextBounds(mTitleText,0,mTitleText.length(),mBound);
-            float textWidth=mBound.width();
-            int desired= (int) (getPaddingLeft()+textWidth+getPaddingRight());
-            width=desired;
+            mPaint.getTextBounds(mTitleText, 0, mTitleText.length(), mBound);
+            float textWidth = mBound.width();
+            int desired = (int) (getPaddingLeft() + textWidth + getPaddingRight());
+            width = desired;
+        }
+
+        if (heightMode == MeasureSpec.EXACTLY)
+        {
+            height = heightSize;
+        } else
+        {
+            mPaint.setTextSize(mTitleTextSize);
+            mPaint.getTextBounds(mTitleText, 0, mTitleText.length(), mBound);
+            float textHeight = mBound.height();
+            int desired = (int) (getPaddingTop() + textHeight + getPaddingBottom());
+            height = desired;
         }
 
 
-        if(heightMode==MeasureSpec.EXACTLY){
-            height=heightSize;
-        }else{
-            mPaint.setTextSize(mTitleTextSize);
-            mPaint.getTextBounds(mTitleText,0,mTitleText.length(),mBound);
-            float textHeight=mBound.height();
 
-            int desired= (int) (getPaddingTop()+textHeight+getPaddingBottom());
-            height=desired;
-        }
-        setMeasuredDimension(width,height);
+        setMeasuredDimension(width, height);
     }
 
     /**
@@ -113,10 +117,11 @@ public class CustomTitleView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         //绘制一个矩形颜色为黄色
-        mPaint.setColor(Color.YELLOW);
+        mPaint.setColor(Color.rgb(21,96,243));
         canvas.drawRect(0, 0, getMeasuredWidth(), getMeasuredHeight(), mPaint);
         //绘制一个text颜色为设置的颜色
         mPaint.setColor(mTitleTextColor);
-        canvas.drawText(mTitleText,(getWidth()-mBound.width())/2,(getHeight()-mBound.height())/2,mPaint);
+        mPaint.setTextSize(mTitleTextSize);
+        canvas.drawText(mTitleText,(getWidth()-mBound.width())/2,(getHeight()+mBound.height())/2,mPaint);
     }
 }
