@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- CustomTitleView-->
     <attr name="titleText" format="string"/>
     <attr name="titleTextColor" format="color"/>
     <attr name="titleTextSize" format="dimension"/>
@@ -8,5 +9,23 @@
         <attr name="titleText"/>
         <attr name="titleTextColor"/>
         <attr name="titleTextSize"/>
+    </declare-styleable>
+
+    <!-- CustomImageText-->
+    <attr name="imageText" format="string"/>
+    <attr name="imageTextSize" format="dimension"/>
+    <attr name="imageTextColor" format="color"/>
+    <attr name="imageSrc" format="reference"/>
+    <attr name="imageScaleType">
+        <enum name="fileXY" value="0"/>
+        <enum name="center" value="1"/>
+    </attr>
+
+    <declare-styleable name="CustomImageText">
+        <attr name="imageText" />
+        <attr name="imageTextSize" />
+        <attr name="imageTextColor"/>
+        <attr name="imageSrc" />
+        <attr name="imageScaleType"/>
     </declare-styleable>
 </resources>
