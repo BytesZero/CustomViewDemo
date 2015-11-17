@@ -22,10 +22,27 @@
     </attr>
 
     <declare-styleable name="CustomImageText">
-        <attr name="imageText" />
-        <attr name="imageTextSize" />
+        <attr name="imageText"/>
+        <attr name="imageTextSize"/>
         <attr name="imageTextColor"/>
-        <attr name="imageSrc" />
+        <attr name="imageSrc"/>
         <attr name="imageScaleType"/>
     </declare-styleable>
+
+    <!-- CustomCircle-->
+
+    <attr name="firstColor" format="color"/>
+    <attr name="secondColor" format="color"/>
+    <attr name="circleWith" format="dimension"/>
+    <attr name="speed" format="integer"/>
+
+    <declare-styleable name="CustomCircle">
+        <attr name="firstColor"/>
+        <attr name="secondColor"/>
+        <attr name="circleWith"/>
+        <attr name="speed"/>
+    </declare-styleable>
+
+
+
 </resources>

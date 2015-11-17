@@ -1,26 +1,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:zsl="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_horizontal">
-
-    <com.zsl.customviewdemo.view.CustomTitleView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        zsl:titleText="I Love You"
-        zsl:titleTextColor="#ffffff"
-        zsl:titleTextSize="45sp" />
-
-    <com.zsl.customviewdemo.view.CustomImageText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        zsl:imageText="篮球妹子"
-        zsl:imageTextColor="#c105c7"
-        zsl:imageTextSize="20sp"
-        zsl:imageSrc="@mipmap/meizi"
-        android:padding="5dp"
-        zsl:imageScaleType="center"/>
+              xmlns:zsl="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center_horizontal"
+              android:orientation="vertical">
+    <Button
+        android:id="@+id/main_bt_custom1"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="有背景色的TextView"/>
+    <Button
+        android:id="@+id/main_bt_custom2"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="图片和文字"/>
+    <Button
+        android:id="@+id/main_bt_custom3"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="圆环进度条"/>
 
 </LinearLayout>
