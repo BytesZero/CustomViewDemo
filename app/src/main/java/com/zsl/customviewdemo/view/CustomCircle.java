@@ -21,16 +21,18 @@ public class CustomCircle extends View {
     private int mFirstColor;
     //第二圈的颜色
     private int mSecondColor;
+    //交换中介的颜色
+    private int mTempColor;
     //圆环的宽度
     private int mCircleWidth;
     //当前进度
     private int mProgress=0;
     //速度
     private int mSpeed;
-    //是否应该开始下一个
-    private boolean isNext=false;
     //画笔
     private Paint mPaint;
+    //
+    RectF oval;
 
 
     public CustomCircle(Context context) {
@@ -66,6 +68,7 @@ public class CustomCircle extends View {
         }
         a.recycle();
         mPaint=new Paint();
+        oval=new RectF();
 
         new Thread(){
             @Override
@@ -74,12 +77,9 @@ public class CustomCircle extends View {
                     mProgress++;
                     if (mProgress == 360) {
                         mProgress = 0;
-                        if (!isNext) {
-                            isNext = true;
-                        } else {
-                            isNext = false;
-                        }
-
+                        mTempColor=mFirstColor;
+                        mFirstColor=mSecondColor;
+                        mSecondColor=mTempColor;
                     }
                     postInvalidate();
                     try {
@@ -99,20 +99,14 @@ public class CustomCircle extends View {
         mPaint.setStrokeWidth(mCircleWidth);//设置圆环的宽度
         mPaint.setAntiAlias(true);//消除锯齿
         mPaint.setStyle(Paint.Style.STROKE);//设置为空心
-        RectF oval=new RectF(center-radius,center-radius,center+radius,center+radius);//定义圆弧的形状和大小界限
-
-        if (!isNext){
-            mPaint.setColor(mFirstColor);
-            canvas.drawCircle(center, center, radius, mPaint);//画出圆环
-            mPaint.setColor(mSecondColor);
-            canvas.drawArc(oval,-90,mProgress,false,mPaint);
-        }else {
-            mPaint.setColor(mFirstColor);
-            canvas.drawCircle(center, center, radius, mPaint);
-            mPaint.setColor(mSecondColor);
-            canvas.drawArc(oval,-90,mProgress,false,mPaint);
-        }
-
-
+        //配置圆环的型状和范围
+        oval.left=center-radius;
+        oval.top=center-radius;
+        oval.right=center+radius;
+        oval.bottom=center+radius;
+        mPaint.setColor(mFirstColor);
+        canvas.drawCircle(center, center, radius, mPaint);//画出圆环
+        mPaint.setColor(mSecondColor);
+        canvas.drawArc(oval,-90,mProgress,false,mPaint);
     }
 }
